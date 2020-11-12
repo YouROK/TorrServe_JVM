@@ -3,8 +3,32 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1d4d538-aa42-4140-a067-71275d21041a" name="Default Changelist" comment="" />
+    <list default="true" id="c1d4d538-aa42-4140-a067-71275d21041a" name="Default Changelist" comment="init">
+      <change beforePath="$PROJECT_DIR$/TorrServe.iws" beforeDir="false" afterPath="$PROJECT_DIR$/TorrServe.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/yourok/torrserve/app/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/yourok/torrserve/app/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/yourok/torrserve/models/torrents/Torrent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/yourok/torrserve/models/torrents/Torrent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/yourok/torrserve/models/torrents/TorrentListView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/yourok/torrserve/models/torrents/TorrentListView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/forms/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/forms/main.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +78,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -62,6 +89,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1kBt8FbyS1PQp09H1V7YdJAf9yQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -71,34 +101,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
-    <configuration name="TorrServe [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="run" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="ru.yourok.torrserve.app.App" />
+      <module name="TorrServe.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.TorrServe [run]" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -109,52 +128,84 @@
       <option name="presentableId" value="Default" />
       <updated>1605185652150</updated>
       <workItem from="1605185653744" duration="1235000" />
+      <workItem from="1605186926246" duration="2445000" />
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1605187001737</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605187001737</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="418" y="218" width="1084" height="712" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605185918876">
+    <state x="281" y="137" width="1084" height="768" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605189325669">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="418" y="218" width="1084" height="712" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.40.1920.1040@0.40.1920.1040" timestamp="1605185918876" />
-    <state width="1870" height="322" key="GridCell.Tab.0.bottom" timestamp="1605186898078">
+    <state x="281" y="137" width="1084" height="768" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.40.1920.1040@0.40.1920.1040" timestamp="1605189325669" />
+    <state x="692" y="379" width="525" height="425" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605189272342">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1870" height="322" key="GridCell.Tab.0.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1605186898078" />
-    <state width="1870" height="322" key="GridCell.Tab.0.center" timestamp="1605186898077">
+    <state x="692" y="379" width="525" height="425" key="#com.intellij.ide.util.TreeClassChooserDialog/0.40.1920.1040@0.40.1920.1040" timestamp="1605189272342" />
+    <state width="1868" height="250" key="GridCell.Tab.0.bottom" timestamp="1605189497772">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1870" height="322" key="GridCell.Tab.0.center/0.40.1920.1040@0.40.1920.1040" timestamp="1605186898077" />
-    <state width="1870" height="322" key="GridCell.Tab.0.left" timestamp="1605186898077">
+    <state width="1868" height="250" key="GridCell.Tab.0.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1605189497772" />
+    <state width="1868" height="250" key="GridCell.Tab.0.center" timestamp="1605189497772">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1870" height="322" key="GridCell.Tab.0.left/0.40.1920.1040@0.40.1920.1040" timestamp="1605186898077" />
-    <state width="1870" height="322" key="GridCell.Tab.0.right" timestamp="1605186898077">
+    <state width="1868" height="250" key="GridCell.Tab.0.center/0.40.1920.1040@0.40.1920.1040" timestamp="1605189497772" />
+    <state width="1868" height="250" key="GridCell.Tab.0.left" timestamp="1605189497772">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1870" height="322" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1605186898077" />
-    <state width="1870" height="322" key="GridCell.Tab.1.bottom" timestamp="1605186898079">
+    <state width="1868" height="250" key="GridCell.Tab.0.left/0.40.1920.1040@0.40.1920.1040" timestamp="1605189497772" />
+    <state width="1868" height="250" key="GridCell.Tab.0.right" timestamp="1605189497772">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1870" height="322" key="GridCell.Tab.1.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1605186898079" />
-    <state width="1870" height="322" key="GridCell.Tab.1.center" timestamp="1605186898078">
+    <state width="1868" height="250" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1605189497772" />
+    <state width="1868" height="250" key="GridCell.Tab.1.bottom" timestamp="1605189497774">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1870" height="322" key="GridCell.Tab.1.center/0.40.1920.1040@0.40.1920.1040" timestamp="1605186898078" />
-    <state width="1870" height="322" key="GridCell.Tab.1.left" timestamp="1605186898078">
+    <state width="1868" height="250" key="GridCell.Tab.1.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1605189497774" />
+    <state width="1868" height="250" key="GridCell.Tab.1.center" timestamp="1605189497773">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1870" height="322" key="GridCell.Tab.1.left/0.40.1920.1040@0.40.1920.1040" timestamp="1605186898078" />
-    <state width="1870" height="322" key="GridCell.Tab.1.right" timestamp="1605186898078">
+    <state width="1868" height="250" key="GridCell.Tab.1.center/0.40.1920.1040@0.40.1920.1040" timestamp="1605189497773" />
+    <state width="1868" height="250" key="GridCell.Tab.1.left" timestamp="1605189497773">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1870" height="322" key="GridCell.Tab.1.right/0.40.1920.1040@0.40.1920.1040" timestamp="1605186898078" />
+    <state width="1868" height="250" key="GridCell.Tab.1.left/0.40.1920.1040@0.40.1920.1040" timestamp="1605189497773" />
+    <state width="1868" height="250" key="GridCell.Tab.1.right" timestamp="1605189497773">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1868" height="250" key="GridCell.Tab.1.right/0.40.1920.1040@0.40.1920.1040" timestamp="1605189497773" />
     <state x="433" y="105" width="1052" height="737" key="SettingsEditor" timestamp="1605186506250">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="433" y="105" width="1052" height="737" key="SettingsEditor/0.40.1920.1040@0.40.1920.1040" timestamp="1605186506250" />
+    <state x="554" y="191" width="800" height="565" key="Vcs.Push.Dialog.v2" timestamp="1605187009350">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="554" y="191" width="800" height="565" key="Vcs.Push.Dialog.v2/0.40.1920.1040@0.40.1920.1040" timestamp="1605187009350" />
   </component>
 </project>
