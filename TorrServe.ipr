@@ -27,6 +27,7 @@
   <component name="ProjectCodeStyleConfiguration">
     <option name="USE_PER_PROJECT_SETTINGS" value="true" />
     <code_scheme name="Project" version="173">
+      <option name="RIGHT_MARGIN" value="999" />
       <JetCodeStyleSettings>
         <option name="PACKAGES_TO_USE_STAR_IMPORTS">
           <value>
@@ -58,7 +59,7 @@
       <module fileurl="file://$PROJECT_DIR$/TorrServe.test.iml" filepath="$PROJECT_DIR$/TorrServe.test.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="corretto-1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="RemoteRepositoriesConfiguration">

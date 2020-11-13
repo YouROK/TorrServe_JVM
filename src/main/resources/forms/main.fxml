@@ -5,52 +5,51 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="400.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/11.0.2"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.yourok.torrserve.forms.Main">
+<AnchorPane prefHeight="400.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.yourok.torrserve.forms.Main">
     <children>
-        <SplitPane dividerPositions="0.3333333333333333" prefHeight="400.0" prefWidth="797.0"
-                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                   AnchorPane.topAnchor="0.0">
+        <SplitPane dividerPositions="0.3333333333333333" prefHeight="400.0" prefWidth="797.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
-                        <ListView fx:id="lvTorrents" layoutY="28.0" prefHeight="347.0" prefWidth="261.0"
-                                  AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="0.0"
-                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0"/>
-                        <MenuBar prefHeight="29.0" prefWidth="261.0" AnchorPane.leftAnchor="0.0"
-                                 AnchorPane.rightAnchor="0.0">
+                        <ListView fx:id="lvTorrents" layoutY="28.0" prefHeight="347.0" prefWidth="261.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0"/>
+                        <MenuBar prefHeight="29.0" prefWidth="261.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <menus>
                                 <Menu fx:id="mSettings" mnemonicParsing="false" text="Settings"/>
                                 <Menu fx:id="mCache" mnemonicParsing="false" text="Cache"/>
                                 <Menu fx:id="mAbout" mnemonicParsing="false" text="About"/>
                             </menus>
                         </MenuBar>
-                        <Label fx:id="lbStatus" layoutY="376.0" prefHeight="22.0" prefWidth="261.0" text="Status"
-                               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Label fx:id="lbStatus" layoutY="376.0" prefHeight="22.0" prefWidth="261.0" text="Status" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <padding>
                                 <Insets left="10.0"/>
                             </padding>
                         </Label>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="566.0">
                     <children>
-                        <ImageView fx:id="ivPoster" fitHeight="123.0" fitWidth="93.0" layoutX="6.0" layoutY="6.0"
-                                   pickOnBounds="true"
-                                   preserveRatio="true"/>
+                        <ImageView fx:id="ivPoster" fitHeight="315.0" fitWidth="219.0" layoutX="6.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true"/>
 
-                        <Label fx:id="lbTitle" layoutX="103.0" layoutY="14.0" text="Title">
+                        <Label fx:id="lbTitle" layoutX="6.0" layoutY="14.0" text="Title">
                             <font>
                                 <Font name="System Bold" size="16.0"/>
                             </font>
                         </Label>
-                        <Label fx:id="lbHash" layoutX="103.0" layoutY="40.0" text="Hash"/>
-                        <Label fx:id="lbName" layoutX="103.0" layoutY="60.0" text="Name"/>
-                        <Label fx:id="lbSize" layoutX="103.0" layoutY="80.0" text="Size"/>
-                        <Label fx:id="lbSpeed" layoutX="103.0" layoutY="100.0" text="Speed"/>
-                        <Label fx:id="lbActivePeers" layoutX="103.0" layoutY="120.0" text="Active peers"/>
-                        <Label fx:id="lbConnPeers" layoutX="103.0" layoutY="140.0" text="Connected Peers"/>
-                        <Label fx:id="lbAllPeers" layoutX="103.0" layoutY="160.0" text="All Peers"/>
+                        <Label fx:id="lbStat" layoutX="230.0" layoutY="40.0" text="Stat"/>
+                        <Label fx:id="lbHash" layoutX="230.0" layoutY="60.0" text="Hash"/>
+                        <Label fx:id="lbName" layoutX="230.0" layoutY="80.0" text="Name"/>
+                        <Label fx:id="lbSize" layoutX="230.0" layoutY="100.0" text="Size"/>
+                        <Label fx:id="lbSpeed" layoutX="230.0" layoutY="120.0" text="Speed"/>
+                        <Label fx:id="lbPreload" layoutX="230.0" layoutY="140.0" text="Preload"/>
+                        <Label fx:id="lbActivePeers" layoutX="230.0" layoutY="160.0" text="Active peers"/>
+                        <Label fx:id="lbConnPeers" layoutX="230.0" layoutY="180.0" text="Connected Peers"/>
+                        <Label fx:id="lbAllPeers" layoutX="230.0" layoutY="200.0" text="All Peers"/>
+
+                        <Button fx:id="btnOpenLink" layoutX="6.0" layoutY="358.0" mnemonicParsing="false" text="Open link"/>
+                        <Button fx:id="btnCopyLink" layoutX="89.0" layoutY="358.0" mnemonicParsing="false" text="Copy link"/>
+
+                        <ListView fx:id="lvFiles" layoutX="230.0" layoutY="220.0" prefHeight="165.0" prefWidth="340.0"/>
+                        <Button fx:id="btnPreload" layoutX="503.0" layoutY="192.0" mnemonicParsing="false" text="Preload"/>
 
                     </children>
                 </AnchorPane>

@@ -1,14 +1,22 @@
 package ru.yourok.torrserve.forms
 
+import javafx.application.Platform
 import javafx.collections.ObservableList
 import javafx.fxml.FXML
+import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.ListView
 import javafx.scene.control.Menu
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
+import javafx.scene.input.Clipboard
+import javafx.scene.input.ClipboardContent
+import ru.yourok.torrserve.models.torrents.FileStat
 import ru.yourok.torrserve.models.torrents.Torrent
 import ru.yourok.torrserve.server.service.Service
+import ru.yourok.torrserve.utils.Utils
+import ru.yourok.torrserve.utils.Utils.preloadTorrent
+import kotlin.concurrent.thread
 
 
 class Main {
@@ -34,6 +42,9 @@ class Main {
     var lbTitle: Label? = null
 
     @FXML
+    var lbStat: Label? = null
+
+    @FXML
     var lbHash: Label? = null
 
     @FXML
@@ -46,6 +57,9 @@ class Main {
     var lbSpeed: Label? = null
 
     @FXML
+    var lbPreload: Label? = null
+
+    @FXML
     var lbActivePeers: Label? = null
 
     @FXML
@@ -54,7 +68,22 @@ class Main {
     @FXML
     var lbAllPeers: Label? = null
 
+    @FXML
+    var btnOpenLink: Button? = null
+
+    @FXML
+    var btnCopyLink: Button? = null
+
+    @FXML
+    var lvFiles: ListView<FileStat>? = null
+
+    @FXML
+    var btnPreload: Button? = null
+
     private val torrentObservableList: ObservableList<Torrent> = javafx.collections.FXCollections.observableArrayList()
+    private val fileObservableList: ObservableList<FileStat> = javafx.collections.FXCollections.observableArrayList()
+    private var selectedTorrent: Torrent? = null
+    private var selectedFile: FileStat? = null
 
     @FXML
     fun initialize() {
@@ -75,14 +104,21 @@ class Main {
         }
 
         Service.onTorrentChange = onSelected()
+        cleanInfo()
         Service.start()
 
         lvTorrents?.items = torrentObservableList
         lvTorrents?.cellFactory = TorrCellFactory()
 
-        lvTorrents?.selectionModel?.selectedItemProperty()?.addListener { observable, oldValue, newValue ->
-            selTorr = newValue
+        lvTorrents?.selectionModel?.selectedItemProperty()?.addListener { _, _, newValue ->
             Service.selectedTorrent = newValue
+            updateInfo(newValue)
+        }
+
+        lvFiles?.items = fileObservableList
+        lvFiles?.cellFactory = FileCellFactory()
+        lvFiles?.selectionModel?.selectedItemProperty()?.addListener { _, _, newValue ->
+            selectedFile = newValue
         }
 
         mSettings?.setOnAction {
@@ -96,51 +132,94 @@ class Main {
         mAbout?.setOnAction {
             //TODO show about
         }
-    }
 
-    private var selTorr: Torrent? = null
-    fun onSelected(): (torr: Torrent?) -> Unit {
-        return { torr ->
-            if (selTorr == null)
-                cleanInfo()
-            else {
-                if (selTorr?.poster != torr?.poster && torr?.poster?.isNotEmpty() == true)
-                    ivPoster?.imageProperty()?.set(Image(torr.poster))
-                if (selTorr?.title != torr?.title)
-                    lbTitle?.text = torr?.title ?: ""
-                if (selTorr?.hash != torr?.hash)
-                    lbHash?.text = torr?.hash ?: ""
-                if (selTorr?.name != torr?.name)
-                    lbName?.text = torr?.name ?: ""
-                if (selTorr?.torrent_size != torr?.torrent_size)
-                    lbSize?.text = formatSize(torr?.torrent_size?.toDouble() ?: 0.0)
-                if (selTorr?.download_speed != torr?.download_speed)
-                    lbSpeed?.text = formatSize(torr?.download_speed ?: 0.0) + "/sec"
-                if (selTorr?.active_peers != torr?.active_peers)
-                    lbActivePeers?.text = torr?.active_peers?.toString() ?: ""
-                if (selTorr?.connected_seeders != torr?.connected_seeders)
-                    lbConnPeers?.text = torr?.connected_seeders?.toString() ?: ""
-                if (selTorr?.total_peers != torr?.total_peers)
-                    lbAllPeers?.text = torr?.total_peers?.toString() ?: ""
+        lbHash?.setOnMouseClicked {
+            if (it.clickCount >= 2) {
+                val clipboard: Clipboard = Clipboard.getSystemClipboard()
+                val content = ClipboardContent()
+                content.putString(lbHash?.text ?: return@setOnMouseClicked)
+                clipboard.setContent(content)
+            }
+        }
+
+        btnOpenLink?.setOnAction {
+//            HostServices().showDocument()
+        }
+
+        btnCopyLink?.setOnAction {
+
+        }
+
+        btnPreload?.setOnAction {
+            selectedTorrent?.let {
+                if (it.stat != 2)
+                    thread {
+                        preloadTorrent(it)
+                    }
             }
         }
     }
 
+    fun onSelected(): (torr: Torrent?) -> Unit {
+        return { torr ->
+            updateInfo(torr)
+        }
+    }
+
+    private fun updateFiles(torr: Torrent?) {
+        if (torr?.file_stats?.size ?: 0 != fileObservableList.size || torr != selectedTorrent) {
+            fileObservableList.clear()
+            torr?.file_stats?.let {
+                fileObservableList.addAll(it)
+            }
+        }
+    }
+
+    private fun updateInfo(torr: Torrent?) {
+        if (torr == null)
+            cleanInfo()
+        else {
+            if (selectedTorrent?.poster != torr.poster && torr.poster.isNotEmpty())
+                Platform.runLater {
+                    ivPoster?.image = Image(torr.poster)
+                }
+            if (torr.poster.isEmpty())
+                ivPoster?.image = Image("/img/ep.png")
+
+            lbTitle?.text = torr.title
+            lbStat?.text = torr.stat_string
+            lbHash?.text = torr.hash
+            lbName?.text = torr.name
+            lbSize?.text = Utils.formatSize(torr.torrent_size.toDouble())
+            if (torr.preloaded_bytes < torr.preload_size) {
+                lbPreload?.text = Utils.formatSize(torr.preloaded_bytes.toDouble()) + "/" +
+                        Utils.formatSize(torr.preload_size.toDouble()) + " " +
+                        (torr.preloaded_bytes * 100 / torr.preload_size).toString() + "%"
+            }
+            lbSpeed?.text = Utils.formatSize(torr.download_speed) + "/sec"
+            lbActivePeers?.text = torr.active_peers.toString()
+            lbConnPeers?.text = torr.connected_seeders.toString()
+            lbAllPeers?.text = torr.total_peers.toString()
+
+            updateFiles(torr)
+
+            selectedTorrent = torr
+        }
+    }
+
     private fun cleanInfo() {
-        ivPoster?.imageProperty()?.set(null)
+        ivPoster?.image = null
         lbTitle?.text = ""
+        lbStat?.text = ""
         lbHash?.text = ""
         lbName?.text = ""
         lbSize?.text = ""
         lbSpeed?.text = ""
+        lbPreload?.text = ""
         lbActivePeers?.text = ""
         lbConnPeers?.text = ""
         lbAllPeers?.text = ""
     }
 
-    private fun formatSize(v: Double): String? {
-        if (v < 1024.0) return "$v B"
-        val z = (63 - java.lang.Long.numberOfLeadingZeros(v.toLong())) / 10
-        return String.format("%.1f %sB", v / (1L shl z * 10), " KMGTPE"[z])
-    }
+
 }

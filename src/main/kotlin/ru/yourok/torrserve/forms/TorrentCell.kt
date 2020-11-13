@@ -1,9 +1,10 @@
 package ru.yourok.torrserve.forms
 
+import javafx.application.Platform
 import javafx.scene.control.Label
 import javafx.scene.control.ListCell
 import javafx.scene.control.ListView
-import javafx.scene.layout.BorderPane
+import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import javafx.util.Callback
@@ -14,7 +15,9 @@ class TorrentCell : ListCell<Torrent>() {
 
     private val title = Label()
     private val hash = Label()
-    private val bp = BorderPane(null, title, hash, null, null)
+    private val bp = VBox(
+        title, hash
+    )
 
     init {
         title.font = Font.font(null, FontWeight.BOLD, 14.0)
@@ -31,9 +34,11 @@ class TorrentCell : ListCell<Torrent>() {
             else
                 torr?.name
 
-            title.text = name
-            hash.text = torr?.hash ?: ""
-            graphic = bp
+            Platform.runLater {
+                title.text = name
+                hash.text = torr?.hash ?: ""
+                graphic = bp
+            }
         }
     }
 }

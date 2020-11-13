@@ -1,5 +1,6 @@
 package ru.yourok.torrserve.server.service
 
+import javafx.application.Platform
 import ru.yourok.torrserve.models.torrents.Torrent
 import ru.yourok.torrserve.server.api.Api
 import kotlin.concurrent.thread
@@ -42,7 +43,9 @@ object Service {
 
                 if (lastStatus != status) {
                     lastStatus = status
-                    onStatusChange?.invoke(status)
+                    Platform.runLater {
+                        onStatusChange?.invoke(status)
+                    }
                 }
 
                 var list = emptyList<Torrent>()
@@ -52,14 +55,18 @@ object Service {
                 }
                 if (list != lastList) {
                     lastList = list
-                    onListChange?.invoke(list)
+                    Platform.runLater {
+                        onListChange?.invoke(list)
+                    }
                 }
 
                 selectedTorrent?.let { torr ->
                     try {
                         selectedTorrent = Api.getTorrent(torr.hash)
                         if (selectedTorrent != lastTorrent) {
-                            onTorrentChange?.invoke(selectedTorrent)
+                            Platform.runLater {
+                                onTorrentChange?.invoke(selectedTorrent)
+                            }
                         }
                     } catch (e: Exception) {
                     }
